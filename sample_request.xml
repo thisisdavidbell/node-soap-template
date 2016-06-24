@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:math="http://math.pot.ibm.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <math:add>
+         <augend>4</augend>
+         <addend>5</addend>
+      </math:add>
+   </soapenv:Body>
+</soapenv:Envelope>

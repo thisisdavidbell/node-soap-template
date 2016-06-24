@@ -1,0 +1,7 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <addResponse xmlns="http://math.pot.ibm.com">
+         <addReturn xmlns="">9</addReturn>
+      </addResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

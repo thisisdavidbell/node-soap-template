@@ -1,0 +1,28 @@
+{
+  "name": "node-soap-template",
+  "version": "0.1.0",
+  "description": "Basic Node App to implement a SOAP Service from its WSDL",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thisisdavidbell/node-soap-template.git"
+  },
+  "keywords": [
+    "node",
+    "soap",
+    "rest"
+  ],
+  "author": "David Bell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thisisdavidbell/node-soap-template/issues"
+  },
+  "homepage": "https://github.com/thisisdavidbell/node-soap-template#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "handlebars": "^4.0.5"
+  }
+}
