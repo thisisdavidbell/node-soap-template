@@ -23,6 +23,7 @@
   "homepage": "https://github.com/thisisdavidbell/node-soap-template#readme",
   "dependencies": {
     "express": "^4.14.0",
+    "express-xml-bodyparser": "^0.3.0",
     "handlebars": "^4.0.5"
   }
 }
