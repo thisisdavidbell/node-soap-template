@@ -24,8 +24,15 @@ function add_function(req, res) {
 };
 
 function subtract_function(req, res) {
-  res.send("<some>in subtract function</some>");
-  console.log("#### req.body ####");
+  var vals = getinputs(req); 
+
+  var result = vals[0]-vals[1];
+
+
+  res.send("<some>in subtract function</some> " + result);
+  
+
+/*  console.log("#### req.body ####");
   console.log(req.body);
 
   console.log("\n#### req.body['soapenv:envelope']");
@@ -48,6 +55,7 @@ function subtract_function(req, res) {
 
   console.log("\n#### req.body['soapenv:envelope']['soapenv:body'][0]['math:add'][0]['augend'][0]");
   console.log(req.body['soapenv:envelope']['soapenv:body'][0]['math:add'][0]['augend'][0]);  
+*/  
 };
 
 function multiply_function(req, res) {
@@ -58,4 +66,7 @@ function divide_function(req, res) {
   res.send("in divide function");
 };
 
-
+function getinputs(req) {
+	var inputs = [ (req.body['soapenv:envelope']['soapenv:body'][0]['math:add'][0]['augend'][0]*1), (req.body['soapenv:envelope']['soapenv:body'][0]['math:add'][0]['addend'][0]*1)]
+    return inputs;
+}
