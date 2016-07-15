@@ -16,9 +16,9 @@ server.post('/divide', divide_function);
 
 var response_template = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
   + '<soapenv:Body>'
-     + '<addResponse xmlns="http://math.pot.ibm.com">'
-        + '<addReturn xmlns="">{{result}}</addReturn>'
-     + '</addResponse>'
+     + '<{{operation}}Response xmlns="http://math.pot.ibm.com">'
+        + '<{{operation}}Return xmlns="">{{result}}</{{operation}}Return>'
+     + '</{{operation}}Response>'
   + '</soapenv:Body>'
 + '</soapenv:Envelope>';
 var template = handlebars.compile(response_template);
@@ -31,8 +31,9 @@ function maths_function(req, res) {
 //  var result = vals[1]+vals[2];
 //  console.log(vals[0]);
 
+  var operation = vals[0];
   var result = 0;
-  switch(vals[0]) {
+  switch(operation) {
   	case 'add':
       result = vals[1]+vals[2];
   	  break;
@@ -49,7 +50,7 @@ function maths_function(req, res) {
       result = -1; 
   }
 
-  var data = { "result": result};
+  var data = { "result": result, "operation": operation};
   var soapresponse = template(data);
 
   res.send(soapresponse);  
