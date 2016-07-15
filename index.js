@@ -24,8 +24,6 @@ console.log("Server running at " + host + ":" + port);
 
 function maths_function(req, res) {
   var vals = getinputs(req); 
-//  var result = vals[1]+vals[2];
-//  console.log(vals[0]);
 
   var operation = vals[0];
   var result = 0;
@@ -54,10 +52,11 @@ function maths_function(req, res) {
 
 
 function getinputs(req) {
-	var operation = Object.keys(req.body['soapenv:envelope']['soapenv:body'][0])[0];
-	var name1 = Object.keys(req.body['soapenv:envelope']['soapenv:body'][0][operation][0])[0];
-	var name2 = Object.keys(req.body['soapenv:envelope']['soapenv:body'][0][operation][0])[1];
+	var soapbody = req.body['soapenv:envelope']['soapenv:body'][0];
+	var operation = Object.keys(soapbody)[0];
+	var name1 = Object.keys(soapbody[operation][0])[0];
+	var name2 = Object.keys(soapbody[operation][0])[1];
 //	console.log(name1 + name2);
-	var inputs = [ operation.split(':')[1], (req.body['soapenv:envelope']['soapenv:body'][0][operation][0][name1][0]*1), (req.body['soapenv:envelope']['soapenv:body'][0][operation][0][name2][0]*1)];
+	var inputs = [ operation.split(':')[1], (soapbody[operation][0][name1][0]*1), (soapbody[operation][0][name2][0]*1)];
     return inputs;
 }
