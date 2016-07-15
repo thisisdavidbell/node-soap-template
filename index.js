@@ -9,10 +9,6 @@ var server = new express();
 server.use(xmlparser());
 
 server.post('/maths', maths_function);
-server.post('/add', add_function);
-server.post('/subtract', subtract_function);
-server.post('/multiply', multiply_function);
-server.post('/divide', divide_function);
 
 var response_template = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
   + '<soapenv:Body>'
@@ -56,45 +52,6 @@ function maths_function(req, res) {
   res.send(soapresponse);  
 };
 
-function add_function(req, res) {
-  var vals = getinputs(req); 
-  var result = vals[1]+vals[2];
-
-  var data = { "result": result};
-  var soapresponse = template(data);
-
-  res.send(soapresponse);  
-};
-
-function subtract_function(req, res) {
-  var vals = getinputs(req); 
-  var result = vals[1]-vals[2];
-
-  var data = { "result": result};
-  var soapresponse = template(data);
-
-  res.send(soapresponse);  
-};
-
-function multiply_function(req, res) {
-  var vals = getinputs(req); 
-  var result = vals[1]*vals[2];
-
-  var data = { "result": result};
-  var soapresponse = template(data);
-
-  res.send(soapresponse);  
-};
-
-function divide_function(req, res) {
-  var vals = getinputs(req); 
-  var result = vals[1]/vals[2];
-
-  var data = { "result": result};
-  var soapresponse = template(data);
-
-  res.send(soapresponse);  
-};
 
 function getinputs(req) {
 	var operation = Object.keys(req.body['soapenv:envelope']['soapenv:body'][0])[0];
